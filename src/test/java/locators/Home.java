@@ -104,7 +104,7 @@ public class Home {
                 PlusButton.click();
             if(value=='-')
                 MinusButton.click();
-            if(value=='%')
+            if(value=='/')
                 DivideButton.click();
             if(value=='~')
                 PlusMinus.click();

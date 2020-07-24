@@ -39,6 +39,7 @@ Feature: Smoke test for Addition.
       | Inputs             | BrowserWindowSize | TestID   | Result |
       | 3~+5~  =           |    800,800        |   12     |    -8  |
       | 4~+5~+8~+2+3~ =    |    800,800        |   13     |    -18 |
+
   @Addition @Smoke
   Scenario Outline: Check the addition of only one operand: <TestID>
     Given Set browser size as <BrowserWindowSize>
@@ -55,8 +56,8 @@ Feature: Smoke test for Addition.
       | 4+-                |    800,800        |   19     |    4   |
       | 6+*                |    800,800        |   20     |    6   |
       | 7+/                |    800,800        |   21     |    7   |
-      | 8+%                |    800,800        |   22     |    8   |
-      | 3+%=               |    800,800        |   23     |    3   |
+      | 8+/                |    800,800        |   22     |    8   |
+      | 3+/=               |    800,800        |   23     |    3   |
 
   @Addition @Smoke
   Scenario Outline: Check the addition of positive decimal numbers: <TestID>
@@ -93,3 +94,16 @@ Feature: Smoke test for Addition.
       | 0~+0~=  |    800,800        |   29     |    0   |
       | 0+0~=   |    800,800        |   30     |    0   |
       | 0~+0=   |    800,800        |   31     |    0   |
+
+  @Addition @Smoke
+  Scenario Outline: Check the addition of any number with zero: <TestID>
+    Given Set browser size as <BrowserWindowSize>
+    And Send inputs for perform operation: <Inputs>
+    Then Verify the output with image filename <TestID>
+    And Validate backend as results : <Result>
+    Examples:
+      | Inputs  | BrowserWindowSize | TestID   | Result |
+      | 0+5=    |    800,800        |   106    |    5   |
+      | 5~+0~=  |    800,800        |   107    |   -5   |
+      | 0+3~=   |    800,800        |   108    |   -3   |
+      | 0~+3=   |    800,800        |   109    |    3   |
