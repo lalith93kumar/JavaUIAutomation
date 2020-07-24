@@ -12,9 +12,9 @@ import java.util.concurrent.TimeUnit;
 
 public class Driver {
     public WebDriver webDriver;
-    private WebDriverWait wait;
+    public Scenario scenario;
 
-    public Driver setup()
+    public Driver setup(Scenario scenario)
     {
         ChromeOptions options = new ChromeOptions();
         String[] switches = Hooks.propertiesUtil.getPropertyAsString("switches").split(",");
@@ -24,6 +24,7 @@ public class Driver {
         }
         webDriver = new ChromeDriver(options);
         webDriver.manage().deleteAllCookies();
+        this.scenario = scenario;
         return this;
     }
 

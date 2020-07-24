@@ -2,6 +2,7 @@ package locators;
 
 import UIFrame.Driver;
 import UIFrame.JSLocator;
+import cucumber.api.Scenario;
 import org.apache.commons.io.FileUtils;
 import org.junit.Assert;
 import org.openqa.selenium.By;
@@ -156,8 +157,14 @@ public class Home {
         }
         else{
             File actualImage = extractCalculatorImage(captureImage(element),element);
+            CompareUtil.Result result = CompareUtil.CompareImage(expectedFilePath(fileName), actualImage.getPath());
+            File expectedImage = new File(expectedFilePath(fileName));
+            byte[] screenshot = FileUtils.readFileToByteArray(actualImage);
+            driver.scenario.embed(screenshot, "image/png");
+            screenshot = FileUtils.readFileToByteArray(expectedImage);
+            driver.scenario.embed(screenshot, "image/png");
             driver.revertTo();
-            Assert.assertEquals(CompareUtil.Result.Matched, CompareUtil.CompareImage(expectedFilePath(fileName), actualImage.getPath()));
+            Assert.assertEquals(CompareUtil.Result.Matched,result);
         }
     }
 

@@ -19,9 +19,9 @@ public class Hooks {
     }
 
     @Before
-    public void initiateWebdriver()
+    public void initiateWebdriver(Scenario scenario)
     {
-        driver = new Driver().setup();
+        driver = new Driver().setup(scenario);
         driver.get(Hooks.propertiesUtil.getPropertyAsString("test-url"));
     }
 

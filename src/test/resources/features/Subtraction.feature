@@ -4,8 +4,8 @@ Feature: Smoke test for Subtraction.
   Scenario Outline: Check the operation on different browser size: <TestID>
     Given Set browser size as <BrowserWindowSize>
     And Send inputs for perform operation: <Inputs>
-    And Validate backend as results : <Result>
     Then Verify the output with image filename <TestID>
+    And Validate backend as results : <Result>
     Examples:
       | Inputs             | BrowserWindowSize | TestID    | Result  |
       | 1-2-3-4-5-6-7-8-9= |    100,200        |    32     | -43     |
@@ -22,8 +22,8 @@ Feature: Smoke test for Subtraction.
   Scenario Outline: Check the addition of positive and negative number: <TestID>
     Given Set browser size as <BrowserWindowSize>
     And Send inputs for perform operation: <Inputs>
-    And Validate backend as results : <Result>
     Then Verify the output with image filename <TestID>
+    And Validate backend as results : <Result>
     Examples:
       | Inputs              | BrowserWindowSize | TestID   | Result |
       | 1-2+3~-4-5~-6 =     |    800,800        |   41     |    -9  |
@@ -33,8 +33,8 @@ Feature: Smoke test for Subtraction.
   Scenario Outline: Check the addition of negative numbers: <TestID>
     Given Set browser size as <BrowserWindowSize>
     And Send inputs for perform operation: <Inputs>
-    And Validate backend as results : <Result>
     Then Verify the output with image filename <TestID>
+    And Validate backend as results : <Result>
     Examples:
       | Inputs              | BrowserWindowSize | TestID   | Result |
       | 3~-5~  =            |    800,800        |   43     |    2   |
@@ -43,8 +43,8 @@ Feature: Smoke test for Subtraction.
   Scenario Outline: Check the addition of only one operand: <TestID>
     Given Set browser size as <BrowserWindowSize>
     And Send inputs for perform operation: <Inputs>
-    And Validate backend as results : <Result>
     Then Verify the output with image filename <TestID>
+    And Validate backend as results : <Result>
     Examples:
       | Inputs             | BrowserWindowSize | TestID   | Result |
       | 3-                 |    800,800        |   45     |    3   |
@@ -56,14 +56,14 @@ Feature: Smoke test for Subtraction.
       | 6-*                |    800,800        |   51     |    6   |
       | 7-/                |    800,800        |   52     |    7   |
       | 8-%                |    800,800        |   53     |    8   |
-      | 9-%=               |    800,800        |   54     |    9   |
+      | 3-%=               |    800,800        |   54     |    3   |
 
   @Subtraction @Smoke
   Scenario Outline: Check the addition of positive decimal numbers: <TestID>
     Given Set browser size as <BrowserWindowSize>
     And Send inputs for perform operation: <Inputs>
-    And Validate backend as results : <Result>
     Then Verify the output with image filename <TestID>
+    And Validate backend as results : <Result>
     Examples:
       | Inputs             | BrowserWindowSize | TestID   | Result   |
       | 0.5-0.5=           |    800,800        |   55     |    0     |
@@ -73,8 +73,8 @@ Feature: Smoke test for Subtraction.
   Scenario Outline: Check the addition of negative decimal numbers: <TestID>
     Given Set browser size as <BrowserWindowSize>
     And Send inputs for perform operation: <Inputs>
-    And Validate backend as results : <Result>
     Then Verify the output with image filename <TestID>
+    And Validate backend as results : <Result>
     Examples:
       | Inputs                    | BrowserWindowSize | TestID   | Result |
       | 0.3~-0.5~=                |    800,800        |   57     |   0.2  |
@@ -85,8 +85,8 @@ Feature: Smoke test for Subtraction.
   Scenario Outline: Check the addition of zero combinations: <TestID>
     Given Set browser size as <BrowserWindowSize>
     And Send inputs for perform operation: <Inputs>
-    And Validate backend as results : <Result>
     Then Verify the output with image filename <TestID>
+    And Validate backend as results : <Result>
     Examples:
       | Inputs  | BrowserWindowSize | TestID   | Result |
       | 0-0=    |    800,800        |   59     |    0   |

@@ -12,7 +12,8 @@ import org.junit.runner.RunWith;
                 "pretty",
                 "html:build/cucumber-html-report"
         },
-        features={ "src/test/resources/features" }
+        features={ "src/test/resources/features" },
+        tags = {"@Smoke"}
 )
 public class Runner {
 
