@@ -146,3 +146,27 @@ Feature: Smoke test for Division.
       | 0/3~=   |    800,800        |   103    | 0      |
       | 0~/5~=  |    800,800        |   104    | 0      |
       | 0/999999999=|    800,800    |   105    | 0      |
+
+  @Division @Smoke
+  Scenario Outline: Analysis in Division operation with one: <TestID>
+    Given Set browser size as <BrowserWindowSize>
+    And Send inputs for perform operation: <Inputs>
+    Then Verify the output with image filename <TestID>
+    And Validate backend as results : <Result>
+    Examples:
+      | Inputs  | BrowserWindowSize | TestID   | Result      |
+      |999999999*1=|    800,800     |   148    |  999 999 999  |
+      |999999999~*1=|    800,800    |   149    | -999 999 999  |
+      |999999999~*1~=|    800,800   |   150    |  999 999 999  |
+
+  @Division @Smoke
+  Scenario Outline: Analysis in Division operation with other numbers except one: <TestID>
+    Given Set browser size as <BrowserWindowSize>
+    And Send inputs for perform operation: <Inputs>
+    Then Verify the output with image filename <TestID>
+    And Validate backend as results : <Result>
+    Examples:
+      | Inputs  | BrowserWindowSize | TestID   | Result      |
+      |999999999*2=|    800,800     |   151    |  2e+9       |
+      |999999999~*4~=|    800,800   |   152    |  4e+9       |
+      |999999999~*4=|    800,800    |   153    | -4e+9       |
