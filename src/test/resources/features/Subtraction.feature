@@ -106,3 +106,26 @@ Feature: Smoke test for Subtraction.
       | 5~-0~=  |    800,800        |   111    |   -5   |
       | 0-3~=   |    800,800        |   112    |    3   |
       | 0~-3=   |    800,800        |   113    |   -3   |
+
+  @Subtraction @Smoke
+  Scenario Outline: Analysis in subtraction operation: <TestID>
+    Given Set browser size as <BrowserWindowSize>
+    And Send inputs for perform operation: <Inputs>
+    Then Verify the output with image filename <TestID>
+    And Validate backend as results : <Result>
+    Examples:
+      | Inputs  | BrowserWindowSize | TestID   | Result      |
+      |999999999-1=|    800,800     |   144    |  999 999 998  |
+      |999999999~-1=|    800,800    |   145    |  -1e+9      |
+      |999999999-1~=|    800,800    |   146    |   2e+9      |
+      |999999999~-1~=|    800,800   |   147    | -999 999 998  |
+
+  @Subtraction @Smoke
+  Scenario Outline: Analysis of boundary value in Subtraction operation: <TestID>
+    Given Set browser size as <BrowserWindowSize>
+    And Send inputs for perform operation: <Inputs>
+    Then Verify the output with image filename <TestID>
+    And Validate backend as results : <Result>
+    Examples:
+      | Inputs  | BrowserWindowSize | TestID   | Result        |
+      |9999999999-1=|    800,800    |   154    | -999 999 998    |

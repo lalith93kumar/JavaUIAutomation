@@ -51,10 +51,11 @@ public class Home {
     JSLocator ShowScreenText;
     JSLocator PlusMinus;
     JSLocator DotButton;
+    JSLocator ClearButton;
     public Home(Driver driver) {
         this.driver = driver;
         PageFactory.initElements(driver.webDriver, this);
-        EqualButton = JSLocator.builder().ParentElement(Canvas).XAxis( 4).YAxis(5).build();
+        EqualButton = JSLocator.builder().ParentElement(Canvas).XAxis(4).YAxis(5).build();
         PlusButton = JSLocator.builder().ParentElement(Canvas).XAxis(3).YAxis(5).build();
         MinusButton = JSLocator.builder().ParentElement(Canvas).XAxis(3).YAxis(4).build();
         DivideButton = JSLocator.builder().ParentElement(Canvas).XAxis(3).YAxis(2).build();
@@ -70,6 +71,7 @@ public class Home {
         Num9Button = JSLocator.builder().ParentElement(Canvas).XAxis(2).YAxis(2).build();
         PlusMinus = JSLocator.builder().ParentElement(Canvas).XAxis(2).YAxis(5).build();
         DotButton = JSLocator.builder().ParentElement(Canvas).XAxis(1).YAxis(5).build();
+        ClearButton = JSLocator.builder().ParentElement(Canvas).XAxis(4).YAxis(1).build();
         ShowScreenText = JSLocator.builder().ParentElement(Canvas).GlobalVariable("exportRoot").JSVariableName("showscreen_txt").build();
     }
 
@@ -110,6 +112,8 @@ public class Home {
                 PlusMinus.click();
             if(value=='.')
                 DotButton.click();
+            if(value=='c')
+                ClearButton.click();
         }
         driver.revertTo();
     }
@@ -133,6 +137,7 @@ public class Home {
         setXYValues(Num9Button);
         setXYValues(PlusMinus);
         setXYValues(DotButton);
+        setXYValues(ClearButton);
         driver.revertTo();
     }
     public void setXYValues(JSLocator element) {

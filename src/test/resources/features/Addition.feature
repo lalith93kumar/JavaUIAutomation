@@ -107,3 +107,27 @@ Feature: Smoke test for Addition.
       | 5~+0~=  |    800,800        |   107    |   -5   |
       | 0+3~=   |    800,800        |   108    |   -3   |
       | 0~+3=   |    800,800        |   109    |    3   |
+
+  @Addition @Smoke
+  Scenario Outline: Analysis in addition operation: <TestID>
+    Given Set browser size as <BrowserWindowSize>
+    And Send inputs for perform operation: <Inputs>
+    Then Verify the output with image filename <TestID>
+    And Validate backend as results : <Result>
+    Examples:
+      | Inputs  | BrowserWindowSize | TestID   | Result      |
+      |999999999+1=|    800,800     |   140    |  1e+9       |
+      |999999999~+1=|    800,800    |   141    |  -999 999 998  |
+      |999999999+1~=|    800,800    |   142    |  999 999 998  |
+      |999999999~+1~=|    800,800   |   143    |  -1e+9      |
+
+  @Addition @Smoke
+  Scenario Outline: Analysis of boundary value in addition operation: <TestID>
+    Given Set browser size as <BrowserWindowSize>
+    And Send inputs for perform operation: <Inputs>
+    Then Verify the output with image filename <TestID>
+    And Validate backend as results : <Result>
+    Examples:
+      | Inputs  | BrowserWindowSize | TestID   | Result   |
+      |9999999999+1=|    800,800    |   154    |  1e+9    |
+      |999999998+1=|    800,800     |   155    | 999 999 999|
